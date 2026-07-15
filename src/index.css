@@ -1,0 +1,338 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* ---------- Design tokens ---------- */
+:root {
+  --ink: #1B2430;          /* primary text */
+  --ink-soft: #5B6472;      /* secondary text */
+  --navy: #1E3557;          /* primary / sidebar */
+  --navy-deep: #16283F;     /* sidebar gradient end */
+  --gold: #C9A44C;          /* accent — ledger seal */
+  --gold-soft: #E8DCB8;
+  --paper: #F5F6F8;         /* app background */
+  --surface: #FFFFFF;       /* card background */
+  --border: #E3E6EB;
+  --success: #2F8F5B;
+  --danger: #C4453C;
+  --warn: #B8863E;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.font-mono { font-family: var(--font-mono); }
+
+a { color: var(--navy); }
+
+/* Focus visibility (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- App shell ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 248px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #E9EDF2;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 22px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 18px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 3px;
+  border: 1.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.brand-sub {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  opacity: 0.85;
+}
+
+.nav-section-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(233,237,242,0.4);
+  padding: 14px 22px 6px;
+}
+
+.nav-link-custom {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 22px;
+  color: rgba(233,237,242,0.82);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-link-custom:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.nav-link-custom.active {
+  background: rgba(201,164,76,0.12);
+  border-left-color: var(--gold);
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 14px 22px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ---------- Main content ---------- */
+.main-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 62px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.content-area {
+  padding: 28px;
+  flex: 1;
+}
+
+/* ---------- Ledger stat card (signature element) ---------- */
+.ledger-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 20px;
+  position: relative;
+}
+
+.ledger-eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.ledger-number {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--navy);
+}
+
+.ledger-rule {
+  height: 2px;
+  width: 30px;
+  background: var(--gold);
+  margin-top: 12px;
+}
+
+/* ---------- Cards / tables ---------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+table.table-cms {
+  margin-bottom: 0;
+}
+
+table.table-cms thead th {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  padding: 12px 20px;
+  background: #FAFBFC;
+}
+
+table.table-cms tbody td {
+  padding: 12px 20px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+table.table-cms tbody tr:last-child td { border-bottom: none; }
+
+.badge-role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.badge-admin { background: #EFE3F5; color: #6B3FA0; }
+.badge-faculty { background: #DDEBFB; color: #2A5A9C; }
+.badge-student { background: #E1F0E5; color: #2F7A4E; }
+
+.roll-mono { font-family: var(--font-mono); font-size: 13.5px; color: var(--ink-soft); }
+
+/* ---------- Auth / login ---------- */
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  background: var(--paper);
+}
+
+.auth-visual {
+  flex: 1.1;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-visual::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(201,164,76,0.25);
+  border-radius: 50%;
+}
+
+.auth-visual::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(201,164,76,0.35);
+  border-radius: 50%;
+}
+
+.auth-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-card { width: 100%; max-width: 380px; }
+
+.form-label-cms {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.btn-navy {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+
+.btn-navy:hover { background: var(--navy-deep); border-color: var(--navy-deep); color: #fff; }
+
+@media (max-width: 900px) {
+  .auth-visual { display: none; }
+  .sidebar { position: fixed; z-index: 40; height: 100%; transform: translateX(-100%); transition: transform 0.2s ease; }
+  .sidebar.open { transform: translateX(0); }
+}
