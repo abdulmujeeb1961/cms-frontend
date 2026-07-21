@@ -4,6 +4,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AppLayout from "./components/AppLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Departments from "./pages/Departments";
 import Students from "./pages/Students";
 import Faculty from "./pages/Faculty";
 import Courses from "./pages/Courses";
@@ -19,6 +20,10 @@ function App() {
 
           <Route element={<ProtectedRoute><AppLayout title="Dashboard" /></ProtectedRoute>}>
             <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRoles={["ADMIN"]}><AppLayout title="Departments" /></ProtectedRoute>}>
+            <Route path="/departments" element={<Departments />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["ADMIN"]}><AppLayout title="Students" /></ProtectedRoute>}>

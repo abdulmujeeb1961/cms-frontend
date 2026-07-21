@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import {
   LuLayoutDashboard, LuUsers, LuGraduationCap, LuBookOpen,
-  LuCalendarCheck, LuClipboardList, LuLogOut,
+  LuCalendarCheck, LuClipboardList, LuLogOut, LuBuilding2,
 } from "react-icons/lu";
 import { useAuth } from "../context/AuthContext";
 
 const NAV_BY_ROLE = {
   ADMIN: [
     { to: "/dashboard", label: "Overview", icon: LuLayoutDashboard },
+    { to: "/departments", label: "Departments", icon: LuBuilding2 },
     { to: "/students", label: "Students", icon: LuGraduationCap },
     { to: "/faculty", label: "Faculty", icon: LuUsers },
     { to: "/courses", label: "Courses", icon: LuBookOpen },
